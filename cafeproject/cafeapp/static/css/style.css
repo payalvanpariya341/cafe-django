@@ -1879,7 +1879,7 @@ section{
     cursor:pointer;
     transition:.3s;
 }
-
+  
 .place-order-btn:hover{
     background:#FFC107;
     color:#000;
