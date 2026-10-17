@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+
+<link rel="stylesheet" href="{% static 'css/adstyle.css' %}" />
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+/>
+
+{% include 'admin/adheader.html' %}
+
+<div class="manage-order-page">
+  <div class="manage-order-title">
+    <h1>Address</h1>
+
+    <p>Customer Address Details</p>
+  </div>
+
+  <div class="order-table-container">
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Pin</th>
+      </thead>
+        
+
+      <tbody>
+            <tr>
+                <td>{{ a.1 }}</td>
+                <td>{{ a.2 }}</td>
+                <td>{{ a.3 }}</td>
+                <td>{{ a.4 }}</td>
+                <td>{{ a.5 }}</td>
+                <td>{{ a.6 }}</td>
+            </tr>
+            
+      </tbody>
+    </table>
+  </div>
+</div>
+
+    
+</body>
+</html>

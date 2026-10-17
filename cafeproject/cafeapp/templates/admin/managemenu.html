@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Menu</title>
+    {% if messages %}
+    {% for message in messages %}
+        <script>
+            alert('{{ message }}');
+        </script>
+    {% endfor %}
+{% endif %}
+
+    <link rel="stylesheet" href="{% static 'css/adstyle.css' %}">
+</head>
+<body>
+
+{% include 'admin/adheader.html' %}
+
+<section class="manage-menu">
+
+    <h2>Manage Menu</h2>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Menu Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        {% for dt in datas %}
+        <tr>
+            <td>{{ dt.id }}</td>
+            <td><img src="{{ dt.image }}" alt="None" width="100"></td>
+            <td>{{ dt.name }}</td>
+            <td>{{ dt.category }}</td>
+            <td>{{ dt.price }}</td>
+            <td>{{ dt.description }}</td>
+            <td>
+                <a class="delete-btn" href="{% url 'delete_menu' dt.id %}">Delete</a>
+                <a class="edit-btn" href="{% url 'editmenu' dt.id %}">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</section>
+
+</body>
+</html>

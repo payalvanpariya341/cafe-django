@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users</title>
+
+    <link rel="stylesheet" href="{% static 'css/adstyle.css' %}">
+</head>
+<body>
+
+{% include 'admin/adheader.html' %}
+
+<section class="manage-user">
+
+    <h2>Manage Users</h2>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Password</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        {% for dt in datas %}
+        <tr>
+            <td>{{ dt.id }}</td>
+            <td>{{ dt.name }}</td>
+            <td>{{ dt.email }}</td>
+            <td>{{ dt.mobile }}</td>
+            <td>{{ dt.password }}</td>
+            <td>
+                <a class="delete-btn" href="{% url 'delete_user' dt.id %}">Delete</a>
+                <a class="edit-btn" href="{% url 'edituser' dt.id %}">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</section>
+            
+
+    </table>
+
+</section>
+
+</body>
+</html>

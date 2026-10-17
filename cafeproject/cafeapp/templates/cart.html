@@ -1,0 +1,145 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>My Cart</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    {% if messages %} {% for message in messages %}
+    <script>
+      alert("{{ message }}");
+    </script>
+    {% endfor %} {% endif %}
+  </head>
+
+  <body>
+    {% include 'includes/header.html' %}
+
+    <!-- ================= CART PAGE ================= -->
+
+    <div class="cart-page">
+      <!-- Cart Title -->
+
+      <div class="cart-title">
+        <h1>My Cart</h1>
+
+        <p>Your Delicious Food Items</p>
+      </div>
+
+      <!-- Cart Items -->
+
+      <div class="cart-container">
+        {% for c in datas %}
+
+        <div class="cart-box">
+          <!-- Image -->
+
+          <div class="cart-image">
+            <img src="{{ c.img }}" alt="{{ c.nm }}" />
+          </div>
+
+          <!-- Details -->
+
+          <div class="cart-details">
+            <h2>{{ c.nm }}</h2>
+
+            <p class="cart-category">{{ c.cat }}</p>
+
+            <div class="cart-price">₹{{ c.pr }}</div>
+          </div>
+
+          <!-- Remove -->
+
+          <div class="cart-remove">
+            <a
+              href="{% url 'remove_cart' c.id %}"
+              class="remove-btn"
+              onclick="
+                return confirm('Are you sure you want to remove this item?');
+              "
+            >
+              <i class="fa-solid fa-trash"></i>
+            </a>
+          </div>
+        </div>
+
+        {% empty %}
+
+        <!-- Empty Cart -->
+
+        <div class="empty-cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+
+          <h2>No Items in Cart</h2>
+
+          <p>Your cart is currently empty.</p>
+
+          <a href="{% url 'menu' %}" class="continue-btn">
+            <i class="fa-solid fa-utensils"></i>
+            Continue Shopping
+          </a>
+        </div>
+
+        {% endfor %}
+      </div>
+
+      <!-- ================= ORDER SUMMARY ================= -->
+
+      {% if datas %}
+
+      <div class="cart-summary">
+        <h2>Order Summary</h2>
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+
+          <span>₹{{ subtotal }}</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Delivery Charge</span>
+
+          <span>₹40</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Discount</span>
+
+          <span>-₹20</span>
+        </div>
+
+        <div class="summary-row total">
+          <span>Total</span>
+
+          <span>₹{{ total }}</span>
+        </div>
+
+        <!-- Buttons -->
+
+        <div class="cart-buttons">
+          <a href="{% url 'menu' %}" class="continue-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Continue Shopping
+          </a>
+
+          <a href="{% url 'checkout' total %}" class="checkout-btn">
+            Proceed to Checkout
+
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      {% endif %}
+    </div>
+  </body>
+</html>

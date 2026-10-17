@@ -1,0 +1,696 @@
+/* ==========================
+      ADMIN HEADER
+========================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+}
+.admin-header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:80px;
+    background:#3E2723;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 8%;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+    z-index:1000;
+}
+
+.logo a{
+    color:#FFC107;
+    text-decoration:none;
+    font-size:30px;
+    font-weight:700;
+}
+
+.navbar ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+    align-items:center;
+}
+
+.navbar ul li a{
+    color:#fff;
+    text-decoration:none;
+    font-size:17px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.navbar ul li a:hover{
+    color:#FFC107;
+}
+
+.logout-btn{
+    background:#FFC107;
+    color:white !important;
+    padding:10px 22px;
+    border-radius:30px;
+    font-weight:600;
+}
+
+.logout-btn:hover{
+    background:#fff;
+    color:#000 !important;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.admin-header{
+    flex-direction:column;
+    height:auto;
+    padding:20px;
+}
+
+.navbar ul{
+    flex-direction:column;
+    gap:15px;
+    margin-top:15px;
+}
+
+}
+
+/*==========================
+      ADMIN DASHBOARD
+===========================*/
+
+.dashboard{
+    padding:130px 8% 80px;
+    min-height:100vh;
+    background:#f5f5f5;
+}
+
+.dashboard h1{
+    text-align:center;
+    color:#3E2723;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.dashboard p{
+    text-align:center;
+    color:#666;
+    margin-bottom:50px;
+}
+
+.dashboard-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.dashboard-card{
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.dashboard-card:hover{
+    transform:translateY(-8px);
+}
+
+.dashboard-card h2{
+    color:#3E2723;
+    margin-bottom:15px;
+}
+
+.dashboard-card p{
+    color:#666;
+    margin-bottom:25px;
+}
+
+.dashboard-btn{
+    display:inline-block;
+    padding:12px 28px;
+    background:#FFC107;
+    color:#222;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.dashboard-btn:hover{
+    background:#3E2723;
+    color:#fff;
+}
+
+.logout-btn{
+    background:#dc3545;
+    color:#fff;
+}
+
+.logout-btn:hover{
+    background:#b02a37;
+}
+
+/* ==========================
+        ADD MENU
+========================== */
+
+.add-menu{
+    margin-top:120px;
+    display:flex;
+    justify-content:center;
+    padding:40px;
+}
+
+.menu-form{
+    width:700px;
+    background:#fff;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.menu-form h2{
+    text-align:center;
+    color:#3E2723;
+    margin-bottom:25px;
+}
+
+.menu-form table{
+    width:100%;
+    border-spacing:15px;
+}
+
+.menu-form td{
+    font-size:17px;
+    color:#333;
+}
+
+.menu-form input,
+.menu-form select,
+.menu-form textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    outline:none;
+    font-size:15px;
+}
+
+.menu-form textarea{
+    resize:none;
+}
+
+.menu-form input:focus,
+.menu-form select:focus,
+.menu-form textarea:focus{
+    border-color:#FFC107;
+}
+
+.menu-form button{
+    width:180px;
+    height:45px;
+    background:#FFC107;
+    color:#222;
+    border:none;
+    border-radius:30px;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.menu-form button:hover{
+    background:#3E2723;
+    color:#fff;
+}
+
+/*=========================
+      MANAGE MENU
+==========================*/
+
+.manage-menu{
+    margin-top:120px;
+    padding:40px;
+}
+
+.manage-menu h2{
+    text-align:center;
+    color:#3E2723;
+    margin-bottom:30px;
+    font-size:34px;
+}
+
+.manage-menu table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.manage-menu table th{
+    background:#3E2723;
+    color:#fff;
+    padding:15px;
+}
+
+.manage-menu table td{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+.manage-menu table tr:hover{
+    background:#f8f8f8;
+}
+
+.manage-menu img{
+    width:70px;
+    height:70px;
+    border-radius:8px;
+    object-fit:cover;
+}
+
+.edit-btn{
+    background:#FFC107;
+    color:#000;
+    text-decoration:none;
+    padding:8px 18px;
+    border-radius:5px;
+    margin-right:8px;
+    font-weight:600;
+}
+
+.edit-btn:hover{
+    background:#e0a800;
+}
+
+.delete-btn{
+    background:#dc3545;
+    color:#fff;
+    text-decoration:none;
+    padding:8px 18px;
+    border-radius:5px;
+    font-weight:600;
+}
+
+.delete-btn:hover{
+    background:#b52a37;
+}
+/*=========================
+      MANAGE USERS
+=========================*/
+
+.manage-user{
+    margin-top:120px;
+    padding:40px;
+}
+
+.manage-user h2{
+    text-align:center;
+    color:#3E2723;
+    margin-bottom:30px;
+    font-size:34px;
+}
+
+.manage-user table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.manage-user table th{
+    background:#3E2723;
+    color:#fff;
+    padding:15px;
+}
+
+.manage-user table td{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+.manage-user table tr:hover{
+    background:#f8f8f8;
+}
+
+.edit-btn{
+    display:inline-block;
+    background:#FFC107;
+    color:#000;
+    text-decoration:none;
+    padding:8px 16px;
+    border-radius:5px;
+    font-weight:600;
+    margin-right:8px;
+}
+
+.edit-btn:hover{
+    background:#e0a800;
+}
+
+.delete-btn{
+    display:inline-block;
+    background:#dc3545;
+    color:#fff;
+    text-decoration:none;
+    padding:8px 16px;
+    border-radius:5px;
+    font-weight:600;
+}
+
+.delete-btn:hover{
+    background:#b52a37;
+}
+
+.cancel-btn{
+    display:inline-block;
+    background:red;
+    color:#130404;
+    text-decoration:none;
+    padding:8px 16px;
+    border-radius:5px;
+    font-weight:600;
+}
+/* =========================
+   MANAGE ORDER PAGE
+========================= */
+
+.manage-order-page {
+    min-height: 100vh;
+
+    padding: 120px 6% 70px;
+
+    background: #f8f5f2;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.manage-order-title {
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+.manage-order-title h1 {
+    margin: 0;
+
+    font-size: 42px;
+
+    color: #3E2723;
+}
+
+.manage-order-title p {
+    margin-top: 10px;
+
+    font-size: 17px;
+
+    color: #777;
+}
+
+
+/* =========================
+   TABLE BOX
+========================= */
+
+.order-table-container {
+    width: 92%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 20px;
+
+    background: #fff;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+
+    overflow-x: auto;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.order-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 750px;
+}
+
+
+/* =========================
+   TABLE HEADER
+========================= */
+
+.order-table thead th {
+    padding: 17px 15px;
+
+    background: #3E2723;
+
+    color: #fff;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    text-align: center;
+}
+
+
+/* Rounded Header */
+
+.order-table thead th:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+.order-table thead th:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+
+/* =========================
+   TABLE DATA
+========================= */
+
+.order-table tbody td {
+    padding: 16px 15px;
+
+    text-align: center;
+
+    font-size: 15px;
+
+    color: #555;
+
+    border-bottom: 1px solid #eee;
+
+    vertical-align: middle;
+}
+
+
+/* =========================
+   HOVER
+========================= */
+
+.order-table tbody tr {
+    transition: 0.3s;
+}
+
+.order-table tbody tr:hover {
+    background: #fff8e1;
+
+    transform: scale(1.005);
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+.order-image {
+    width: 70px;
+
+    height: 70px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    display: block;
+
+    margin: auto;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   PRODUCT NAME
+========================= */
+
+.order-table tbody td:nth-child(3) {
+    color: #3E2723;
+
+    font-size: 17px;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+.order-table tbody td:nth-child(4) {
+    color: #777;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   PRICE
+========================= */
+
+.order-table tbody td:nth-child(5) {
+    color: #3E2723;
+
+    font-size: 17px;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   USER
+========================= */
+
+.order-table tbody td:nth-child(6) {
+    color: #555;
+
+    font-weight: 500;
+}
+
+
+/* =========================
+   EMPTY ORDER
+========================= */
+
+.no-order {
+    padding: 70px 20px !important;
+
+    text-align: center;
+
+    color: #777 !important;
+}
+
+.no-order i {
+    display: block;
+
+    margin-bottom: 18px;
+
+    font-size: 60px;
+
+    color: #FFC107;
+}
+
+.no-order h3 {
+    margin: 0 0 8px;
+
+    font-size: 25px;
+
+    color: #3E2723;
+}
+
+.no-order p {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .manage-order-page {
+        padding: 110px 4% 60px;
+    }
+
+    .manage-order-title h1 {
+        font-size: 36px;
+    }
+
+    .order-table-container {
+        width: 96%;
+
+        padding: 15px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .manage-order-title h1 {
+        font-size: 30px;
+    }
+
+    .manage-order-title p {
+        font-size: 15px;
+    }
+
+    .order-table-container {
+        width: 100%;
+
+        padding: 10px;
+
+        border-radius: 15px;
+    }
+
+    .order-table thead th {
+        padding: 13px 10px;
+
+        font-size: 14px;
+    }
+
+    .order-table tbody td {
+        padding: 12px 10px;
+
+        font-size: 14px;
+    }
+
+    .order-image {
+        width: 60px;
+
+        height: 60px;
+    }
+}

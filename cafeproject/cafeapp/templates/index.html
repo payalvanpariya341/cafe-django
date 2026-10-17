@@ -1,0 +1,257 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Management</title>
+    {% if messages %}
+    {% for message in messages %}
+        <script>
+            alert('{{ message }}');
+        </script>
+    {% endfor %}
+{% endif %}
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<!-- Header -->
+{% include 'includes/header.html' %}
+
+<!-- ================= HOME SLIDER ================= -->
+
+<section class="slider" id="home">
+
+    <div class="slide active">
+        <img src="{% static 'images/slide1.avif' %}" alt="Cafe">
+
+        <div class="slider-content">
+            <h1>Welcome To Our Cafe</h1>
+            <p>Enjoy Fresh Coffee & Delicious Food</p>
+            <a href="{% url 'menu' %}" class="hero-btn">Explore Menu</a>
+        </div>
+    </div>
+
+    <div class="slide">
+        <img src="{% static 'images/slide2.jpg' %}" alt="Coffee">
+
+        <div class="slider-content">
+            <h1>Best Coffee In Town</h1>
+            <p>Made With Premium Coffee Beans</p>
+            <a href="{% url 'menu' %}" class="hero-btn">Order Now</a>
+        </div>
+    </div>
+
+    <div class="slide">
+        <img src="{% static 'images/slide3.jpg' %}" alt="Food">
+
+        <div class="slider-content">
+            <h1>Fresh & Delicious Food</h1>
+            <p>Experience the Taste of Happiness</p>
+            <a href="#about" class="hero-btn">Learn More</a>
+        </div>
+    </div>
+
+</section>
+<!-- Menu -->
+<section class="menu-page">
+
+    <div class="menu-title">
+        <h1>Our Delicious Menu</h1>
+        <p>Freshly Prepared • Best Quality • Affordable Price</p>
+    </div>
+
+    <div class="menu-container">
+
+        <div class="card">
+            <img src="{% static 'images/coffee.avif' %}" alt="Coffee">
+            <div class="card-content">
+                <h3>Cappuccino</h3>
+                <p>₹150</p>
+                <button class="order-btn" style="width: 290px;">Order Now</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/pizzaa.jpg' %}" alt="Pizza">
+            <div class="card-content">
+                <h3>Veg Pizza</h3>
+                <p>₹350</p>
+                <button class="order-btn" style="width: 290px;">Order Now</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/burger.jpg' %}" alt="Burger">
+            <div class="card-content">
+                <h3>Cheese Burger</h3>
+                <p>₹180</p>
+                <button class="order-btn" style="width: 290px";>Order Now</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/pasta.jpg' %}" alt="Pasta">
+            <div class="card-content">
+                <h3>White Sauce Pasta</h3>
+                <p>₹250</p>
+                <button class="order-btn" style="width: 290px";>Order Now</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/sandwich.jpg' %}" alt="Sandwich">
+            <div class="card-content">
+                <h3>Grilled Sandwich</h3>
+                <p>₹140</p>
+                <button class="order-btn" style="width: 290px";>Order Now</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/cake.webp' %}" alt="Cake">
+            <div class="card-content">
+                <h3>Chocolate Cake</h3>
+                <p>₹220</p>
+                <button class="order-btn" style="width: 290px";>Order Now</button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= ABOUT US ================= -->
+
+<section class="about" id="about">
+    <h2>About Us</h2>
+
+    <div class="about-container">
+
+        <div class="about-image">
+            <img src="{% static 'images/about.avif' %}" alt="About Cafe">
+        </div>
+
+        <div class="about-content">
+
+            <span>About Our Cafe</span>
+
+            <h2>Experience Great Coffee & Delicious Food</h2>
+
+            <p>
+                Welcome to <strong>Cafe Management</strong>, where every cup of coffee is
+                crafted with care and every meal is prepared using fresh, high-quality
+                ingredients. We provide a warm and relaxing atmosphere for friends,
+                families, and coffee lovers.
+            </p>
+
+            <div class="about-features">
+
+                <div class="feature-box">
+                    ☕ Premium Coffee
+                </div>
+
+                <div class="feature-box">
+                    🍔 Fresh Food
+                </div>
+
+                <div class="feature-box">
+                    😊 Friendly Staff
+                </div>
+
+                <div class="feature-box">
+                    🏡 Cozy Atmosphere
+                </div>
+
+            </div>
+
+            <a href="#contact" class="hero-btn">Visit Our Cafe</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+
+    <div class="contact-container">
+
+        <div class="contact-info">
+
+            <h2>Contact Us</h2>
+
+            <p>
+                We'd love to hear from you. Visit our cafe or send us a message.
+            </p>
+
+            <div class="info-box">
+                <span>📍</span>
+                <div>
+                    <h4>Address</h4>
+                    <p>Rajkot, Gujarat, India</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <span>📞</span>
+                <div>
+                    <h4>Phone</h4>
+                    <p>+91 9876543210</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <span>📧</span>
+                <div>
+                    <h4>Email</h4>
+                    <p>cafe@example.com</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <span>🕒</span>
+                <div>
+                    <h4>Opening Hours</h4>
+                    <p>Mon - Sun : 8:00 AM - 11:00 PM</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="contact-form">
+
+            <h2>Send Message</h2>
+
+            <form action="#" method="post">
+                {% csrf_token %}
+
+                <input type="text" placeholder="Full Name" required>
+
+                <input type="email" placeholder="Email Address" required>
+
+                <input type="text" placeholder="Subject" required>
+
+                <textarea rows="6" placeholder="Write your message..." required></textarea>
+
+                <button type="submit">Send Message</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- Footer -->
+
+{% include 'includes/footer.html' %}
+
+<!-- Slider JavaScript -->
+
+<script src="{% static 'js/slide.js' %}"></script>
+
+</body>
+</html>

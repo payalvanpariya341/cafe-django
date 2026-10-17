@@ -1,0 +1,190 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cafe Registration</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    {% if messages %}
+        {% for message in messages %}
+            <script>
+                alert("{{ message }}");
+            </script>
+        {% endfor %}
+    {% endif %}
+</head>
+
+<body>
+
+    <!-- Header -->
+    {% include 'includes/header.html' %}
+
+
+    <!-- Registration Container -->
+    <div class="register-container">
+
+        <div class="register-box">
+
+            <h2>Create Account</h2>
+
+            <p>Join Our Cafe</p>
+
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+
+                <!-- Full Name -->
+                <div class="input-box">
+
+                    <input
+                        type="text"
+                        name="fullname"
+                        placeholder="Full Name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Email -->
+                <div class="input-box">
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email Address"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Mobile Number -->
+                <div class="input-box">
+
+                    <input
+                        type="tel"
+                        name="mb"
+                        value="+91 "
+                        placeholder="Mobile Number"
+                        pattern="\+91 [6-9][0-9]{9}"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="input-box password-box">
+
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Password"
+                        required
+                    >
+
+                    <i
+                        class="fa-solid fa-eye toggle-password"
+                        onclick="togglePassword('password', this)"
+                    ></i>
+
+                </div>
+
+
+                <!-- Confirm Password -->
+                <div class="input-box password-box">
+
+                    <input
+                        type="password"
+                        name="confirm_password"
+                        id="confirm_password"
+                        placeholder="Confirm Password"
+                        required
+                    >
+
+                    <i
+                        class="fa-solid fa-eye toggle-password"
+                        onclick="togglePassword('confirm_password', this)"
+                    ></i>
+
+                </div>
+
+
+                <!-- Register Button -->
+                <button type="submit" class="btn">
+                    Register
+                </button>
+
+
+                <!-- Login Link -->
+                <div class="login-link">
+
+                    Already have an account?
+
+                    <a href="{% url 'login' %}">
+                        Login
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- Footer -->
+    {% include 'includes/footer.html' %}
+
+
+    <!-- Password Show / Hide -->
+    <script>
+
+        function togglePassword(inputId, icon) {
+
+            const input = document.getElementById(inputId);
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                icon.classList.remove("fa-eye");
+
+                icon.classList.add("fa-eye-slash");
+
+            } else {
+
+                input.type = "password";
+
+                icon.classList.remove("fa-eye-slash");
+
+                icon.classList.add("fa-eye");
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

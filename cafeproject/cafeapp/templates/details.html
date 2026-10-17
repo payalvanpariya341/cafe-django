@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Details</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+{% include 'includes/header.html' %}
+
+<section class="details-page">
+
+    <div class="details-card">
+
+        <!-- Image -->
+        <div class="details-image">
+            <img src="{{ datas.5 }}" alt="Coffee">
+        </div>
+
+        <!-- Details -->                        
+        <div class="details-content">
+
+            <h1>{{ datas.1 }}</h1>
+
+            <h2>₹{{ datas.3 }}</h2>
+
+            <p class="description">{{ datas.4 }}</p>
+
+            <hr>
+
+            <div class="food-info">
+
+                <p><strong>Category :</strong>{{ datas.2 }}</p>
+
+                <p><strong>Preparation Time :</strong> 10 Minutes</p>
+
+                <p><strong>Rating :</strong> ⭐⭐⭐⭐⭐ (4.9)</p>
+
+            </div>
+
+            <div class="button-group">
+
+                <a href="{% url 'adcart' datas.0 %}" class="cart-btn">
+                    Add to Cart
+                </a>
+
+                <a href="{% url 'menu' %}" class="back-btn">
+                    Back
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% include 'includes/footer.html' %}
+
+</body>
+</html>

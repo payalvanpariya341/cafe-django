@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Cafe Management</title>
+
+    <link rel="stylesheet" href="{% static 'css/adstyle.css' %}">
+     {% if messages %}
+    {% for message in messages %}
+        <script>
+            alert('{{ message }}');
+        </script>
+    {% endfor %}
+{% endif %}
+
+</head>
+<body>
+
+{% include 'admin/adheader.html' %}
+
+<section class="dashboard">
+
+    <h1>Welcome, Admin 👋</h1>
+    <p>Manage your Cafe Management System from here.</p>
+
+    <div class="dashboard-container">
+
+        <div class="dashboard-card">
+            <h2>🍔 Add Menu</h2>
+            <p>Add new food items, drinks, desserts, and beverages.</p>
+            <a href="{% url 'addmenu' %}" class="dashboard-btn">Add Menu</a>
+        </div>
+
+        <div class="dashboard-card">
+            <h2>📋 Manage Menu</h2>
+            <p>Update, edit, or delete menu items.</p>
+            <a href="{% url 'managemenu' %}" class="dashboard-btn">Manage Menu</a>
+        </div>
+
+        <div class="dashboard-card">
+            <h2>👥 Manage Users</h2>
+            <p>View registered users and manage their accounts.</p>
+            <a href="{% url 'manageuser' %}" class="dashboard-btn">Manage Users</a>
+        </div>
+
+        <div class="dashboard-card">
+            <h2>📦 Manage Orders</h2>
+            <p>View registered users orders and manage theirs orders.</p>
+            <a href="{% url 'manageorder' %}" class="dashboard-btn">Manage Orders</a>
+        </div>
+
+        <div class="dashboard-card">
+            <h2>🚪 Logout</h2>
+            <p>Securely logout from the admin dashboard.</p>
+            <a href="{% url 'logout' %}" class="dashboard-btn logout-btn">Logout</a>
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>

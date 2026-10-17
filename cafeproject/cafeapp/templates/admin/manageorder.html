@@ -1,0 +1,77 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/adstyle.css' %}" />
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+/>
+
+{% include 'admin/adheader.html' %}
+
+<div class="manage-order-page">
+  <div class="manage-order-title">
+    <h1>Manage Orders</h1>
+
+    <p>Customer Order Details</p>
+  </div>
+
+  <div class="order-table-container">
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Image</th>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>User</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for order in orders %}
+
+        <tr>
+          <td>{{ order.id }}</td>
+
+          <td>
+            <img src="{{ order.image }}" class="order-image" />
+          </td>
+
+          <td>{{ order.pname }}</td>
+
+          <td>{{ order.cat }}</td>
+
+          <td>₹{{ order.price }}</td>
+
+          <td>{{ order.user }}</td>
+
+          <td>
+            {% if order.address != "No Address" %}
+
+            <button type="button">
+              <i class="fa-solid fa-location-dot"></i>
+              <a href="{% url 'viewaddress' order.user %}">View Address</a>
+            </button>
+
+            {% else %}
+
+            <span>No Address</span>
+
+            {% endif %}
+          </td>
+        </tr>
+
+        {% empty %}
+
+        <tr>
+          <td colspan="7">No Orders Found</td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

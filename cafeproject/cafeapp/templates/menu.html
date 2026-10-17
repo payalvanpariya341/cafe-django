@@ -1,0 +1,50 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Menu | Cafe</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    {% include 'includes/header.html' %}
+
+    <section class="menu-page">
+      <div class="menu-title">
+        <h1>Our Delicious Menu</h1>
+        <p>Freshly Prepared • Best Quality • Affordable Price</p>
+      </div>
+
+      <div class="menu-container">
+        {% for item in datas %}
+
+        <div class="card">
+          <img src="{{ item.image }}" alt="{{ item.name }}" />
+
+          <div class="card-content">
+            <h3>{{ item.name }}</h3>
+
+            <span class="category">{{ item.category }}</span>
+            
+            <div class="card-bottom">
+              <span class="price">₹{{ item.price }}</span>
+
+              <a href="{% url 'details' item.id %}" class="order-btn">
+                Order Now
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    {% include 'includes/footer.html' %}
+  </body>
+</html>

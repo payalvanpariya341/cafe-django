@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+{% include 'includes/header.html' %}
+
+<section class="checkout-page">
+
+    <div class="checkout-title">
+        <h1>Checkout</h1>
+        <p>Complete Your Order</p>
+    </div>
+
+    <div class="checkout-container">
+
+        <div class="checkout-box">
+
+            <h2>Select Payment Method</h2>
+
+            <div class="payment-method">
+
+                <label>
+                    <input type="radio" name="payment" onclick="showPayment('cod')">
+                    Cash On Delivery
+                </label>
+
+                <label>
+                    <input type="radio" name="payment" onclick="showPayment('upi')">
+                    UPI Payment
+                </label>
+
+
+            </div>
+
+            <!-- Cash On Delivery -->
+
+            <div id="codForm" class="payment-content">
+
+                <h3>Billing Details</h3>
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    {% if dt %}
+                    <input type="text" placeholder="Full Name" name="name" readonly value="{{ dt.name }}">
+
+                    <input type="email" placeholder="Email Address" name="email" required value="{{ dt.email }}">
+
+                    <input type="text" placeholder="Mobile Number" name="mobile" required value="{{ dt.mobile }}">
+
+                    <textarea rows="4" placeholder="Delivery Address" name="address">{{ dt.address }}</textarea>
+
+                    <input type="text" placeholder="City" name="city" value="{{ dt.city }}">
+
+                    <input type="text" placeholder="Pincode" name="pin" value="{{ dt.pin }}">
+                    {% else %}
+                    <input type="text" placeholder="Full Name" name="name" readonly value="{{ u }}">
+
+                    <input type="email" placeholder="Email Address" name="email" required>
+
+                    <input type="text" placeholder="Mobile Number" name="mobile" required>
+
+                    <textarea rows="4" placeholder="Delivery Address" name="address"></textarea>
+
+                    <input type="text" placeholder="City" name="city">
+
+                    <input type="text" placeholder="Pincode" name="pin">
+                    {% endif %}
+
+                    <button type="submit" class="place-order-btn">
+                        Place Order
+                    </button>
+
+                </form>
+
+            </div>
+
+            <!-- UPI -->
+
+            <div id="upiForm" class="payment-content">
+
+                <h3>Scan QR Code</h3>
+
+                <img src="{% static 'images/qr.png' %}" class="qr-image">
+
+                <p>Scan using Google Pay / PhonePe / Paytm</p>
+
+                <button class="place-order-btn">
+                    Payment Completed
+                </button>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'includes/footer.html' %}
+
+<script src="{% static 'js/checkout.js' %}"></script>
+
+
+</body>
+</html>

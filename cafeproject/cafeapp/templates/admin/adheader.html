@@ -1,0 +1,22 @@
+<header class="admin-header">
+
+    <div class="logo">
+        <a href="{% url 'adminhome' %}">☕ Cafe Admin</a>
+    </div>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'adminhome' %}">Home</a></li>
+            <li><a href="{% url 'addmenu' %}">Add Menu</a></li>
+            <li><a href="{% url 'managemenu' %}">Manage Menu</a></li>
+            <li><a href="{% url 'manageuser' %}">Manage User</a></li> 
+            <li><a href="{% url 'manageorder' %}">Manage Order</a></li>
+            <li>
+                <a href="{% url 'logout' %}" class="logout-btn">
+                    Logout
+                </a>
+            </li>   
+        </ul>
+    </nav>
+
+</header>

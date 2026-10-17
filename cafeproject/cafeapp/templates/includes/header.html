@@ -1,0 +1,51 @@
+{% load static %}
+
+<header class="header">
+  <div class="logo">
+    <a href="{% url 'index' %}">☕ Cafe</a>
+  </div>
+
+  <nav class="navbar">
+    <ul>
+      <li>
+        <a
+          href="{% url 'index' %}"
+          class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}"
+        >
+          Home
+        </a>
+      </li>
+
+      <li>
+        <a
+          href="{% url 'menu' %}"
+          class="{% if request.resolver_match.url_name == 'menu' %}active{% endif %}"
+        >
+          Menu
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'index' %}#about">About</a>
+      </li>
+
+      <li>
+        <a href="{% url 'index' %}#contact">Contact</a>
+      </li>
+
+      {% if request.session.client %}
+      <li>
+        <a href="{% url 'cart' %}" class="cart-btn"> 🛒 Cart </a>
+      </li>
+      <li>
+        <a href="{% url 'Logout' %}" class="logout-btn"> Logout </a>
+      </li>
+      {% else %}
+      <li><a href="{% url 'login' %}">Login</a></li>
+      <li>
+        <a href="{% url 'register' %}" class="register-btn"> Register </a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+</header>

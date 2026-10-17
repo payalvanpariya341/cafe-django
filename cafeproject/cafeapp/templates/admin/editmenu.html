@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Menu</title>
+
+    <link rel="stylesheet" href="{% static 'css/adstyle.css' %}">
+</head>
+<body>
+
+{% include 'admin/adheader.html' %}
+
+<section class="add-menu">
+
+    <div class="menu-form">
+
+        <h2>Edit Menu Item</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <table>
+
+                <tr>
+                    <td>Menu Name</td>
+                    <td>
+                        <input type="text" name="mname" placeholder="Enter Menu Name" required value="{{ data.name }}">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Category</td>
+                    <td>
+                        <select name="category" required>
+                            <option value="{{ data.category }}" selected>{{ data.category }}</option>
+                            <option>Coffee</option>
+                            <option>Pizza</option>
+                            <option>Burger</option>
+                            <option>Sandwich</option>
+                            <option>Pasta</option>
+                            <option>Cake</option>
+                            <option>Cold Drinks</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Price</td>
+                    <td>
+                        <input type="number" name="price" placeholder="Enter Price" required value="{{ data.price }}">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Description</td>
+                    <td>
+                        <textarea name="description" rows="4" placeholder="Menu Description">{{ data.description }}</textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Image</td>
+                    <td>
+                        <img src="{{ data.img }}" height="100" width="100">
+                        <input type="file" name="image" >
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center">
+                        <button type="submit">Edit Menu</button>
+                    </td>
+                </tr>
+
+            </table>
+
+        </form>
+
+    </div>
+
+</section>
+
+</body>
+</html>
