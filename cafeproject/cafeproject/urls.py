@@ -49,6 +49,7 @@ urlpatterns = [
     path('edituser/<int:id>/', views.edituser, name='edituser'),
     path('manageorder/', views.manageorder, name='manageorder'),
     path('viewaddress/<str:nm>/',views.viewaddress, name='viewaddress'),
+    path('delete_order/<int:id>',views.delete_order,name='delete_order'),
     path('adminlogout/', views.logout_view, name='logout'),
 
     

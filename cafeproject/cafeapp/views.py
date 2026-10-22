@@ -158,11 +158,13 @@ def Checkout(request,t):
                         'pr':row[3], 
                         'user':row[4], 
                         'img':row[5], 
-                        } for row in data
+                        } 
+                        for row in data
                     ]
 
             insertorder = "INSERT INTO orders (pname, cat, price, user, image,total) VALUES (%s, %s, %s, %s, %s, %s)"
-            cursor.execute(insertorder,[datalist[0]['nm'],datalist[0]['cat'],datalist[0]['pr'],datalist[0]['user'],datalist[0]['img'],t])
+            for product in datalist:
+                cursor.execute(insertorder,[product['nm'],product['cat'],product['pr'],product['user'],product['img'],t])
 
             query= "INSERT INTO address(name,email,mobile,address,city,pin) values(%s,%s,%s,%s,%s,%s)"
             delete_query="DELETE FROM cart WHERE user=%s"
@@ -396,37 +398,47 @@ def manageorder(request):
         return redirect("adlogin")
 
     with connection.cursor() as cursor:
-
         cursor.execute("SELECT * FROM orders")
-        orders = cursor.fetchall()
+        rows = cursor.fetchall()
 
-        datalist = []
+        user_orders = {}
 
-        for item in orders:
+        for item in rows:
+            username = item[4]
 
-            address_query = "SELECT address FROM address WHERE name=%s"
-            cursor.execute(address_query, [item[4]])
-            address_data = cursor.fetchone()
+            if username not in user_orders:
+                user_orders[username] = {
+                    "user": username,
+                    "orders": [],
+                    "address": "Address not available",
+                    "total": 0
+                }
 
-            if address_data:
-                user_address = address_data[0]
-            else:
-                user_address = "Address not available"
+                cursor.execute(
+                    "SELECT address FROM address WHERE name = %s",
+                    [username]
+                )
+                address_data = cursor.fetchone()
 
-            datalist.append({
-                'id': item[0],
-                'pname': item[1],
-                'cat': item[2],
-                'price': item[3],
-                'user': item[4],
-                'image': item[5],
-                'address': user_address
+                if address_data:
+                    user_orders[username]["address"] = address_data[0]
+
+            user_orders[username]["orders"].append({
+                "id": item[0],
+                "pname": item[1],
+                "cat": item[2],
+                "price": item[3],
+                "user": item[4],
+                "image": item[5],
+                "total": item[6]
             })
+
+            user_orders[username]["total"] += float(item[6] or 0)
 
     return render(
         request,
         "admin/manageorder.html",
-        {"orders": datalist}
+        {"orders": list(user_orders.values())}
     )
 
 def viewaddress(request,nm):
@@ -434,6 +446,12 @@ def viewaddress(request,nm):
         cursor.execute("select * from address where name=%s",[nm])
         data=cursor.fetchone()
     return render(request,"admin/viewaddress.html", {"a":data})
+
+def delete_order(request,id):
+    with connection.cursor() as cursor:
+        q=("delete from orders where id=%s")
+        cursor.execute(q,[id])
+        return redirect('manageorder')
 
 def logout_view(request):
     if "aduser" in request.session:

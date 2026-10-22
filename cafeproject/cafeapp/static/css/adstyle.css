@@ -694,3 +694,423 @@ body{
         height: 60px;
     }
 }
+.customer-products {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 250px;
+}
+
+.customer-product {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.customer-product:last-child {
+    border-bottom: none;
+}
+
+.customer-product .order-image {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.product-info strong {
+    color: #422923;
+}
+
+.product-info span {
+    color: #777;
+    font-size: 14px;
+}
+
+.order-table td {
+    vertical-align: middle;
+}
+.delete-order-btn {
+    color: #dc3545;
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.delete-order-btn:hover {
+    color: #a71d2a;
+}
+/* =========================
+   MANAGE ORDER PAGE
+========================= */
+
+.manage-order-page {
+    min-height: 100vh;
+
+    padding: 120px 6% 70px;
+
+    background: #f8f5f2;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.manage-order-title {
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+.manage-order-title h1 {
+    margin: 0;
+
+    font-size: 42px;
+
+    color: #3E2723;
+}
+
+.manage-order-title p {
+    margin-top: 10px;
+
+    font-size: 17px;
+
+    color: #777;
+}
+
+
+/* =========================
+   TABLE BOX
+========================= */
+
+.order-table-container {
+    width: 92%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 20px;
+
+    background: #fff;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+
+    overflow-x: auto;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.order-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 750px;
+}
+
+
+/* =========================
+   TABLE HEADER
+========================= */
+
+.order-table thead th {
+    padding: 17px 15px;
+
+    background: #3E2723;
+
+    color: #fff;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    text-align: center;
+}
+
+
+/* Rounded Header */
+
+.order-table thead th:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+.order-table thead th:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+
+/* =========================
+   TABLE DATA
+========================= */
+
+.order-table tbody td {
+    padding: 16px 15px;
+
+    text-align: center;
+
+    font-size: 15px;
+
+    color: #555;
+
+    border-bottom: 1px solid #eee;
+
+    vertical-align: middle;
+}
+
+
+/* =========================
+   HOVER
+========================= */
+
+.order-table tbody tr {
+    transition: 0.3s;
+}
+
+.order-table tbody tr:hover {
+    background: #fff8e1;
+
+    transform: scale(1.005);
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+.order-image {
+    width: 70px;
+
+    height: 70px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    display: block;
+
+    margin: auto;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   PRODUCT NAME
+========================= */
+
+.order-table tbody td:nth-child(3) {
+    color: #3E2723;
+
+    font-size: 17px;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+.order-table tbody td:nth-child(4) {
+    color: #777;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   PRICE
+========================= */
+
+.order-table tbody td:nth-child(5) {
+    color: #3E2723;
+
+    font-size: 17px;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   USER
+========================= */
+
+.order-table tbody td:nth-child(6) {
+    color: #555;
+
+    font-weight: 500;
+}
+
+
+/* =========================
+   EMPTY ORDER
+========================= */
+
+.no-order {
+    padding: 70px 20px !important;
+
+    text-align: center;
+
+    color: #777 !important;
+}
+
+.no-order i {
+    display: block;
+
+    margin-bottom: 18px;
+
+    font-size: 60px;
+
+    color: #FFC107;
+}
+
+.no-order h3 {
+    margin: 0 0 8px;
+
+    font-size: 25px;
+
+    color: #3E2723;
+}
+
+.no-order p {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .manage-order-page {
+        padding: 110px 4% 60px;
+    }
+
+    .manage-order-title h1 {
+        font-size: 36px;
+    }
+
+    .order-table-container {
+        width: 96%;
+
+        padding: 15px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .manage-order-title h1 {
+        font-size: 30px;
+    }
+
+    .manage-order-title p {
+        font-size: 15px;
+    }
+
+    .order-table-container {
+        width: 100%;
+
+        padding: 10px;
+
+        border-radius: 15px;
+    }
+
+    .order-table thead th {
+        padding: 13px 10px;
+
+        font-size: 14px;
+    }
+
+    .order-table tbody td {
+        padding: 12px 10px;
+
+        font-size: 14px;
+    }
+
+    .order-image {
+        width: 60px;
+
+        height: 60px;
+    }
+}
+.customer-products {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 250px;
+}
+
+.customer-product {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.customer-product:last-child {
+    border-bottom: none;
+}
+
+.customer-product .order-image {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.product-info strong {
+    color: #422923;
+}
+
+.product-info span {
+    color: #777;
+    font-size: 14px;
+}
+
+.order-table td {
+    vertical-align: middle;
+}
+.delete-order-btn {
+    color: #dc3545;
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.delete-order-btn:hover {
+    color: #a71d2a;
+}

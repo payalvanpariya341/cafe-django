@@ -10,56 +10,75 @@
 {% include 'admin/adheader.html' %}
 
 <div class="manage-order-page">
+
   <div class="manage-order-title">
     <h1>Manage Orders</h1>
-
     <p>Customer Order Details</p>
   </div>
 
   <div class="order-table-container">
+
     <table class="order-table">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Image</th>
-          <th>Product Name</th>
-          <th>Category</th>
-          <th>Price</th>
-          <th>User</th>
+          <th>Customer</th>
+          <th>Total Orders</th>
+          <th>Products</th>
           <th>Address</th>
         </tr>
       </thead>
 
       <tbody>
-        {% for order in orders %}
+        {% for customer in orders %}
 
         <tr>
-          <td>{{ order.id }}</td>
+          <td>{{ customer.user }}</td>
+
+          <td>{{ customer.orders|length }}</td>
 
           <td>
-            <img src="{{ order.image }}" class="order-image" />
+            <div class="customer-products">
+
+              {% for item in customer.orders %}
+
+              <div class="customer-product">
+
+                <img
+                  src="{{ item.image }}"
+                  class="order-image"
+                  alt="{{ item.pname }}"
+                />
+
+                <div class="product-info">
+                  <strong>{{ item.pname }}</strong>
+                  <span>{{ item.cat }}</span>
+                  <span>₹{{ item.price }}</span>
+                </div>
+                <div>
+                <a href="{% url 'delete_order' item.id %}"
+               onclick="return confirm('Are you sure you want to delete this order?');"
+               class="delete-order-btn">
+                <i class="fa-solid fa-trash"></i> Delete
+            </a>
+            </div>
+
+              </div>
+
+              {% endfor %}
+
+            </div>
           </td>
 
-          <td>{{ order.pname }}</td>
-
-          <td>{{ order.cat }}</td>
-
-          <td>₹{{ order.price }}</td>
-
-          <td>{{ order.user }}</td>
-
           <td>
-            {% if order.address != "No Address" %}
+            {% if customer.address != "Address not available" %}
 
-            <button type="button">
+            <a href="{% url 'viewaddress' customer.user %}">
               <i class="fa-solid fa-location-dot"></i>
-              <a href="{% url 'viewaddress' order.user %}">View Address</a>
-            </button>
+              View Address
+            </a>
 
             {% else %}
-
-            <span>No Address</span>
-
+              <span>No Address</span>
             {% endif %}
           </td>
         </tr>
@@ -67,11 +86,12 @@
         {% empty %}
 
         <tr>
-          <td colspan="7">No Orders Found</td>
+          <td colspan="4">No Orders Found</td>
         </tr>
 
         {% endfor %}
       </tbody>
     </table>
+
   </div>
 </div>
